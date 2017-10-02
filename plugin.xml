@@ -16,6 +16,7 @@
   </js-module>
 
   <platform name="ios">
+    <framework src="AFNetworking" type="podspec" spec="~> 3.0" />
     <framework src="OpenTok" type="podspec" spec="~> 2.11.4" />
     <config-file target="config.xml" parent="/widget">
       <feature name="VDOpentok">
@@ -25,6 +26,11 @@
 
     <header-file src="src/ios/VDOpentok.h" target-dir="VDOpentokPlugin"/>
     <source-file src="src/ios/VDOpentok.m" target-dir="VDOpentokPlugin"/>
+
+    <header-file src="src/ios/VDVideoViewController.h" target-dir="VDOpentokPlugin"/>
+    <source-file src="src/ios/VDVideoViewController.m" target-dir="VDOpentokPlugin"/>
+    <resource-file src="VDVideoViewController.xib" target-dir="VDOpentokPlugin"/>
+
   </platform>
 
 </plugin>
