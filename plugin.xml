@@ -29,7 +29,7 @@
 
     <header-file src="src/ios/VDVideoViewController.h" target-dir="VDOpentokPlugin"/>
     <source-file src="src/ios/VDVideoViewController.m" target-dir="VDOpentokPlugin"/>
-    <resource-file src="VDVideoViewController.xib" target-dir="VDOpentokPlugin"/>
+    <resource-file src="src/ios/VDVideoViewController.xib" target-dir="VDOpentokPlugin"/>
 
   </platform>
 
