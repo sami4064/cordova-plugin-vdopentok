@@ -16,7 +16,7 @@
   </js-module>
 
   <platform name="ios">
-    <framework src="OpenTok" type="podspec" spec="~> 2.0.0" />
+    <framework src="OpenTok" type="podspec" spec=" " />
     <config-file target="config.xml" parent="/widget">
       <feature name="VDOpentok">
         <param name="ios-package" value="VDOpentok" />
