@@ -10,5 +10,8 @@
 #import <AFNetworking/AFNetworking.h>
 
 @interface VDVideoViewController : UIViewController
+@property (nonatomic, copy, nullable) NSString* kApiKey;
+@property (nonatomic, copy, nullable) NSString* kSessionId;
+@property (nonatomic, copy, nullable) NSString* kToken;
 
 @end

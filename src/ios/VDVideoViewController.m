@@ -10,20 +10,13 @@
 
 #import <OpenTok/OpenTok.h>
 
-// *** Fill the following variables using your own Project info  ***
-// ***          https://dashboard.tokbox.com/projects            ***
-// Replace with your OpenTok API key
-static NSString* kApiKey = @"";
-// Replace with your generated session ID
-static NSString* kSessionId = @"";
-// Replace with your generated token
-static NSString* kToken = @"";
 
 // Change to NO to subscribe to streams other than your own.
 static bool subscribeToSelf = NO;
 
 
 @interface VDVideoViewController ()<OTSessionDelegate, OTSubscriberDelegate, OTPublisherDelegate>
+@property (weak, nonatomic) IBOutlet UIView *buttonsWrapperView;
 
 
 @end
@@ -37,26 +30,47 @@ static bool subscribeToSelf = NO;
 static double widgetHeight = 240;
 static double widgetWidth = 320;
 
+
+- (IBAction)micSwitchPressed:(id)sender {
+        _publisher.publishAudio = !_publisher.publishAudio;
+}
+
+
+- (IBAction)cameraChangePressed:(id)sender {
+    if (_publisher.cameraPosition == AVCaptureDevicePositionFront) {
+        _publisher.cameraPosition = AVCaptureDevicePositionBack;
+    } else {
+        _publisher.cameraPosition = AVCaptureDevicePositionFront;
+    }
+}
+
+
+- (IBAction)cameraTurnOffPressed:(id)sender {
+    _publisher.publishVideo = !_publisher.publishVideo;
+
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    __weak typeof(self) weakSelf = self;
+    __weak VDVideoViewController* weakSelf = self;
     
     
-    [self authenticatUserWithUsername:@"naieemsupto@gmail.com" Password:@"1234" AppointmentID:@"196" completionBlock:^(NSString *sessionId, NSString *tokenId, NSString *apiKey) {
-        kApiKey = apiKey;
-        kSessionId = sessionId;
-        kToken = tokenId;
-        
+//    [self authenticatUserWithUsername:@"naieemsupto@gmail.com" Password:@"1234" AppointmentID:@"196" completionBlock:^(NSString *sessionId, NSString *tokenId, NSString *apiKey) {
+//        _kApiKey = apiKey;
+//        _kSessionId = sessionId;
+//        _kToken = tokenId;
+//        
         // Step 1: As the view comes into the foreground, initialize a new instance
         // of OTSession and begin the connection process.
-        _session = [[OTSession alloc] initWithApiKey:kApiKey
-                                           sessionId:kSessionId
+        _session = [[OTSession alloc] initWithApiKey:_kApiKey
+                                           sessionId:_kSessionId
                                             delegate:weakSelf];
         [weakSelf doConnect];
         
-    }];
+//    }];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -86,7 +100,7 @@ static double widgetWidth = 320;
 {
     OTError *error = nil;
     
-    [_session connectWithToken:kToken error:&error];
+    [_session connectWithToken:_kToken error:&error];
     if (error)
     {
         [self showAlert:[error localizedDescription]];
@@ -113,6 +127,8 @@ static double widgetWidth = 320;
     
     [self.view addSubview:_publisher.view];
     [_publisher.view setFrame:CGRectMake(0, 0, widgetWidth, widgetHeight)];
+    
+    [self.view bringSubviewToFront: self.buttonsWrapperView];
 }
 
 /**

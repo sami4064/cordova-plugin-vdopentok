@@ -1,12 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16A313a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VDVideoViewController">
             <connections>
+                <outlet property="buttonsWrapperView" destination="lhk-I9-Kdc" id="odc-xa-JXi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +19,75 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhk-I9-Kdc">
+                    <rect key="frame" x="0.0" y="539" width="375" height="128"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ji-MM-9b6">
+                            <rect key="frame" x="8" y="56" width="96" height="30"/>
+                            <color key="backgroundColor" red="0.27450980390000002" green="0.75294117650000003" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="9Ze-zo-paR"/>
+                                <constraint firstAttribute="width" constant="96" id="dH0-th-aYv"/>
+                            </constraints>
+                            <state key="normal" title="switch mic off"/>
+                            <connections>
+                                <action selector="micSwitchPressed:" destination="-1" eventType="touchUpInside" id="eAc-Ng-zH4"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ws-xc-x9H">
+                            <rect key="frame" x="8" y="90" width="93" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="93" id="QPK-bH-ki0"/>
+                                <constraint firstAttribute="height" constant="30" id="TTh-rh-22v"/>
+                            </constraints>
+                            <state key="normal" title="turn camera"/>
+                            <connections>
+                                <action selector="cameraChangePressed:" destination="-1" eventType="touchUpInside" id="bmi-HD-ypm"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrp-6d-528">
+                            <rect key="frame" x="241" y="90" width="126" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="5SX-c9-9qo"/>
+                                <constraint firstAttribute="width" constant="126" id="aup-Ej-2La"/>
+                            </constraints>
+                            <state key="normal" title="switch speaker off"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLW-5Y-Bz0">
+                            <rect key="frame" x="244" y="56" width="123" height="30"/>
+                            <color key="backgroundColor" red="0.27450980390000002" green="0.75294117650000003" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="123" id="LNh-zv-uOY"/>
+                                <constraint firstAttribute="height" constant="30" id="zdA-Eq-vOA"/>
+                            </constraints>
+                            <state key="normal" title="switch camera off"/>
+                            <connections>
+                                <action selector="cameraTurnOffPressed:" destination="-1" eventType="touchUpInside" id="eKv-Tb-pVe"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="Kox-cy-DyO"/>
+                        <constraint firstAttribute="trailing" secondItem="bLW-5Y-Bz0" secondAttribute="trailing" constant="8" id="Nmk-Mm-9jO"/>
+                        <constraint firstItem="1Ji-MM-9b6" firstAttribute="leading" secondItem="lhk-I9-Kdc" secondAttribute="leading" constant="8" id="S5O-mM-vht"/>
+                        <constraint firstAttribute="bottom" secondItem="qrp-6d-528" secondAttribute="bottom" constant="8" id="UCd-j4-ZWx"/>
+                        <constraint firstAttribute="trailing" secondItem="qrp-6d-528" secondAttribute="trailing" constant="8" id="WLR-bT-0WV"/>
+                        <constraint firstAttribute="bottom" secondItem="5ws-xc-x9H" secondAttribute="bottom" constant="8" id="i2h-rq-ZfE"/>
+                        <constraint firstItem="qrp-6d-528" firstAttribute="top" secondItem="bLW-5Y-Bz0" secondAttribute="bottom" constant="4" id="qiE-70-ZwI"/>
+                        <constraint firstItem="5ws-xc-x9H" firstAttribute="top" secondItem="1Ji-MM-9b6" secondAttribute="bottom" constant="4" id="rWl-KD-wJi"/>
+                        <constraint firstItem="5ws-xc-x9H" firstAttribute="leading" secondItem="lhk-I9-Kdc" secondAttribute="leading" constant="8" id="skU-v8-xJA"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="lhk-I9-Kdc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="36W-4W-1iM"/>
+                <constraint firstAttribute="bottom" secondItem="lhk-I9-Kdc" secondAttribute="bottom" id="Nm9-ri-mVO"/>
+                <constraint firstAttribute="trailing" secondItem="lhk-I9-Kdc" secondAttribute="trailing" id="orz-Bc-M1K"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="114.5"/>
         </view>
     </objects>
 </document>

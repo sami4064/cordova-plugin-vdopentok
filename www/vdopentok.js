@@ -1,7 +1,8 @@
 /*global cordova, module*/
 
 module.exports = {
-    greet: function (name, successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "VDOpentok", "greet", [name]);
+    startVideo: function (kApiKey, kSession, kToken, successCallback, errorCallback) {
+               cordova.exec(successCallback, errorCallback, "VDOpentok", "startVideo", [kApiKey, kSession, kToken]);
     }
 };
+
