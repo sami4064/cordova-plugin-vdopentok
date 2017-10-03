@@ -14,4 +14,5 @@
 @property (nonatomic, copy, nullable) NSString* kSessionId;
 @property (nonatomic, copy, nullable) NSString* kToken;
 
+-(void)stopCall;
 @end

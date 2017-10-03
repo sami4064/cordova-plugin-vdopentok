@@ -27,9 +27,14 @@ static bool subscribeToSelf = NO;
     OTSubscriber* _subscriber;
 }
 
-static double widgetHeight = 240;
-static double widgetWidth = 320;
+static double widgetHeight = 150;
+static double widgetWidth = 150;
 
+-(void)stopCall{
+    [_session disconnect:nil];
+    [self cleanupPublisher];
+    [self cleanupSubscriber];
+}
 
 - (IBAction)micSwitchPressed:(id)sender {
         _publisher.publishAudio = !_publisher.publishAudio;
@@ -126,7 +131,7 @@ static double widgetWidth = 320;
     }
     
     [self.view addSubview:_publisher.view];
-    [_publisher.view setFrame:CGRectMake(0, 0, widgetWidth, widgetHeight)];
+    [_publisher.view setFrame:CGRectMake(20, 20, widgetWidth, widgetHeight)];
     
     [self.view bringSubviewToFront: self.buttonsWrapperView];
 }
@@ -169,6 +174,8 @@ static double widgetWidth = 320;
 {
     [_subscriber.view removeFromSuperview];
     _subscriber = nil;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 # pragma mark - OTSession delegate callbacks
@@ -245,9 +252,12 @@ didFailWithError:(OTError*)error
     NSLog(@"subscriberDidConnectToStream (%@)",
           subscriber.stream.connection.connectionId);
     assert(_subscriber == subscriber);
-    [_subscriber.view setFrame:CGRectMake(0, widgetHeight, widgetWidth,
-                                          widgetHeight)];
+    CGRect frame = self.view.frame;
+    [_subscriber.view setFrame:CGRectMake(0, 0, frame.size.width,
+                                          frame.size.height)];
     [self.view addSubview:_subscriber.view];
+    [self.view bringSubviewToFront:self.buttonsWrapperView];
+    if(_publisher.view)[self.view bringSubviewToFront:_publisher.view];
 }
 
 - (void)subscriber:(OTSubscriberKit*)subscriber
