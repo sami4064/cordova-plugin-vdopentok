@@ -5,7 +5,7 @@
 - (void)startVideo:(CDVInvokedUrlCommand*)command
 {
 
-    NSString* kApiKey = [[[command arguments] objectAtIndex:0] stringValue];
+    NSString* kApiKey = [[command arguments] objectAtIndex:0] ;
     NSString* kSession = [[command arguments] objectAtIndex:1];
     NSString* kToken = [[command arguments] objectAtIndex:2];
     
