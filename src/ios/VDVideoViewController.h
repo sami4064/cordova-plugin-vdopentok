@@ -14,5 +14,8 @@
 @property (nonatomic, copy, nullable) NSString* kSessionId;
 @property (nonatomic, copy, nullable) NSString* kToken;
 
+@property (nonatomic, strong, nullable) void (^sessionDisconnected)();
+
 -(void)stopCall;
+
 @end

@@ -32,6 +32,9 @@ static double widgetHeight = 120;
 static double widgetWidth = 120;
 
 -(void)stopCall{
+    
+    _sessionDisconnected = nil;
+    
     [_session disconnect:nil];
     [self cleanupPublisher];
     [self cleanupSubscriber];
@@ -220,6 +223,8 @@ static double widgetWidth = 120;
     [NSString stringWithFormat:@"Session disconnected: (%@)",
      session.sessionId];
     NSLog(@"sessionDidDisconnect (%@)", alertMessage);
+    
+    if(_sessionDisconnected) _sessionDisconnected();
 }
 
 
