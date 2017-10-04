@@ -18,6 +18,9 @@ static bool subscribeToSelf = NO;
 @interface VDVideoViewController ()<OTSessionDelegate, OTSubscriberDelegate, OTPublisherDelegate>
 @property (weak, nonatomic) IBOutlet UIView *buttonsWrapperView;
 @property (weak, nonatomic) IBOutlet UIView *myVideoWrapperView;
+@property (weak, nonatomic) IBOutlet UIButton *micButton;
+@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *volumeButton;
 
 
 @end
@@ -41,7 +44,12 @@ static double widgetWidth = 120;
 }
 
 - (IBAction)micSwitchPressed:(id)sender {
-        _publisher.publishAudio = !_publisher.publishAudio;
+    _publisher.publishAudio = !_publisher.publishAudio;
+    if(!_publisher.publishAudio){
+        [self.micButton setImage:[UIImage imageNamed:@"mic-off-icon"] forState:UIControlStateNormal];
+    }else{
+        [self.micButton setImage:[UIImage imageNamed:@"mic-icon"] forState:UIControlStateNormal];
+    }
 }
 
 
@@ -56,11 +64,18 @@ static double widgetWidth = 120;
 
 - (IBAction)cameraTurnOffPressed:(id)sender {
     _publisher.publishVideo = !_publisher.publishVideo;
-
 }
 
 - (IBAction)speakerTurnOffButton:(id)sender {
+    if(!_subscriber) return;
+
     _subscriber.subscribeToAudio = !_subscriber.subscribeToAudio;
+    
+    if(!_subscriber.subscribeToAudio){
+        [self.volumeButton setImage:[UIImage imageNamed:@"volume-off-icon"] forState:UIControlStateNormal];
+    }else{
+        [self.volumeButton setImage:[UIImage imageNamed:@"volume-icon"] forState:UIControlStateNormal];
+    }
     
 }
 

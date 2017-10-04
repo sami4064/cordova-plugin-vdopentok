@@ -12,8 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VDVideoViewController">
             <connections>
                 <outlet property="buttonsWrapperView" destination="lhk-I9-Kdc" id="odc-xa-JXi"/>
+                <outlet property="cameraButton" destination="5ws-xc-x9H" id="FW1-3i-EUI"/>
+                <outlet property="micButton" destination="1Ji-MM-9b6" id="i1j-eB-uj0"/>
                 <outlet property="myVideoWrapperView" destination="NMr-0w-1HL" id="NAo-ll-Tao"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="volumeButton" destination="qrp-6d-528" id="xgD-9m-QlM"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,16 +27,16 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhk-I9-Kdc">
                     <rect key="frame" x="0.0" y="539" width="375" height="128"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ji-MM-9b6">
-                            <rect key="frame" x="8" y="58" width="45" height="45"/>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ji-MM-9b6">
+                            <rect key="frame" x="8" y="43" width="60" height="60"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="45" id="36w-Eu-oTF"/>
-                                <constraint firstAttribute="height" constant="45" id="ijs-wF-nTS"/>
+                                <constraint firstAttribute="width" constant="60" id="36w-Eu-oTF"/>
+                                <constraint firstAttribute="height" constant="60" id="ijs-wF-nTS"/>
                             </constraints>
-                            <state key="normal" backgroundImage="mic-icon"/>
+                            <state key="normal" image="mic-icon"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="22.5"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
                                 <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                                     <color key="value" red="0.0011497654486447573" green="0.49182683229446411" blue="0.99894267320632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
@@ -46,15 +49,15 @@
                                 <action selector="micSwitchPressed:" destination="-1" eventType="touchUpInside" id="eAc-Ng-zH4"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrp-6d-528">
-                            <rect key="frame" x="322" y="58" width="45" height="45"/>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrp-6d-528">
+                            <rect key="frame" x="307" y="43" width="60" height="60"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="45" id="nL8-iZ-vPd"/>
-                                <constraint firstAttribute="height" constant="45" id="nOS-hB-7N1"/>
+                                <constraint firstAttribute="width" constant="60" id="nL8-iZ-vPd"/>
+                                <constraint firstAttribute="height" constant="60" id="nOS-hB-7N1"/>
                             </constraints>
-                            <state key="normal" backgroundImage="volume-icon"/>
+                            <state key="normal" image="volume-icon"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="22.5"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
                                 <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                                     <color key="value" red="0.001149765449" green="0.49182683230000002" blue="0.99894267319999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
@@ -76,15 +79,15 @@
                                 <action selector="cameraTurnOffPressed:" destination="-1" eventType="touchUpInside" id="eKv-Tb-pVe"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ws-xc-x9H">
-                            <rect key="frame" x="165" y="58" width="45" height="45"/>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ws-xc-x9H">
+                            <rect key="frame" x="158" y="43" width="60" height="60"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="45" id="M0w-xQ-l4o"/>
-                                <constraint firstAttribute="height" constant="45" id="xoR-AJ-GFt"/>
+                                <constraint firstAttribute="width" constant="60" id="M0w-xQ-l4o"/>
+                                <constraint firstAttribute="height" constant="60" id="xoR-AJ-GFt"/>
                             </constraints>
-                            <state key="normal" backgroundImage="camera-icon"/>
+                            <state key="normal" image="camera-icon"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="22.5"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
                                 <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                                     <color key="value" red="0.001149765449" green="0.49182683230000002" blue="0.99894267319999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
@@ -134,8 +137,8 @@
         </view>
     </objects>
     <resources>
-        <image name="camera-icon" width="128" height="128"/>
-        <image name="mic-icon" width="128" height="128"/>
-        <image name="volume-icon" width="128" height="128"/>
+        <image name="camera-icon" width="178" height="178"/>
+        <image name="mic-icon" width="178" height="178"/>
+        <image name="volume-icon" width="178" height="178"/>
     </resources>
 </document>
