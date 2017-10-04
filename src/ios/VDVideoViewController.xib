@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VDVideoViewController">
             <connections>
                 <outlet property="buttonsWrapperView" destination="lhk-I9-Kdc" id="odc-xa-JXi"/>
+                <outlet property="myVideoWrapperView" destination="NMr-0w-1HL" id="NAo-ll-Tao"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,71 +24,118 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhk-I9-Kdc">
                     <rect key="frame" x="0.0" y="539" width="375" height="128"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ji-MM-9b6">
-                            <rect key="frame" x="8" y="56" width="96" height="30"/>
-                            <color key="backgroundColor" red="0.27450980390000002" green="0.75294117650000003" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ji-MM-9b6">
+                            <rect key="frame" x="8" y="58" width="45" height="45"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="9Ze-zo-paR"/>
-                                <constraint firstAttribute="width" constant="96" id="dH0-th-aYv"/>
+                                <constraint firstAttribute="width" constant="45" id="36w-Eu-oTF"/>
+                                <constraint firstAttribute="height" constant="45" id="ijs-wF-nTS"/>
                             </constraints>
-                            <state key="normal" title="switch mic off"/>
+                            <state key="normal" backgroundImage="mic-icon"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="22.5"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                    <color key="value" red="0.0011497654486447573" green="0.49182683229446411" blue="0.99894267320632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="2"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="micSwitchPressed:" destination="-1" eventType="touchUpInside" id="eAc-Ng-zH4"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ws-xc-x9H">
-                            <rect key="frame" x="8" y="90" width="93" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrp-6d-528">
+                            <rect key="frame" x="322" y="58" width="45" height="45"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="93" id="QPK-bH-ki0"/>
-                                <constraint firstAttribute="height" constant="30" id="TTh-rh-22v"/>
+                                <constraint firstAttribute="width" constant="45" id="nL8-iZ-vPd"/>
+                                <constraint firstAttribute="height" constant="45" id="nOS-hB-7N1"/>
                             </constraints>
-                            <state key="normal" title="turn camera"/>
+                            <state key="normal" backgroundImage="volume-icon"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="22.5"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                    <color key="value" red="0.001149765449" green="0.49182683230000002" blue="0.99894267319999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="2"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="cameraChangePressed:" destination="-1" eventType="touchUpInside" id="bmi-HD-ypm"/>
+                                <action selector="speakerTurnOffButton:" destination="-1" eventType="touchUpInside" id="QsZ-6g-CpQ"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrp-6d-528">
-                            <rect key="frame" x="241" y="90" width="126" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="5SX-c9-9qo"/>
-                                <constraint firstAttribute="width" constant="126" id="aup-Ej-2La"/>
-                            </constraints>
-                            <state key="normal" title="switch speaker off"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLW-5Y-Bz0">
-                            <rect key="frame" x="244" y="56" width="123" height="30"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLW-5Y-Bz0">
+                            <rect key="frame" x="400" y="56" width="123" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.27450980390000002" green="0.75294117650000003" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="123" id="LNh-zv-uOY"/>
-                                <constraint firstAttribute="height" constant="30" id="zdA-Eq-vOA"/>
-                            </constraints>
                             <state key="normal" title="switch camera off"/>
                             <connections>
                                 <action selector="cameraTurnOffPressed:" destination="-1" eventType="touchUpInside" id="eKv-Tb-pVe"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ws-xc-x9H">
+                            <rect key="frame" x="165" y="58" width="45" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="45" id="M0w-xQ-l4o"/>
+                                <constraint firstAttribute="height" constant="45" id="xoR-AJ-GFt"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="camera-icon"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="22.5"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                    <color key="value" red="0.001149765449" green="0.49182683230000002" blue="0.99894267319999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="2"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="cameraChangePressed:" destination="-1" eventType="touchUpInside" id="bmi-HD-ypm"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="128" id="Kox-cy-DyO"/>
-                        <constraint firstAttribute="trailing" secondItem="bLW-5Y-Bz0" secondAttribute="trailing" constant="8" id="Nmk-Mm-9jO"/>
-                        <constraint firstItem="1Ji-MM-9b6" firstAttribute="leading" secondItem="lhk-I9-Kdc" secondAttribute="leading" constant="8" id="S5O-mM-vht"/>
-                        <constraint firstAttribute="bottom" secondItem="qrp-6d-528" secondAttribute="bottom" constant="8" id="UCd-j4-ZWx"/>
-                        <constraint firstAttribute="trailing" secondItem="qrp-6d-528" secondAttribute="trailing" constant="8" id="WLR-bT-0WV"/>
-                        <constraint firstAttribute="bottom" secondItem="5ws-xc-x9H" secondAttribute="bottom" constant="8" id="i2h-rq-ZfE"/>
-                        <constraint firstItem="qrp-6d-528" firstAttribute="top" secondItem="bLW-5Y-Bz0" secondAttribute="bottom" constant="4" id="qiE-70-ZwI"/>
-                        <constraint firstItem="5ws-xc-x9H" firstAttribute="top" secondItem="1Ji-MM-9b6" secondAttribute="bottom" constant="4" id="rWl-KD-wJi"/>
-                        <constraint firstItem="5ws-xc-x9H" firstAttribute="leading" secondItem="lhk-I9-Kdc" secondAttribute="leading" constant="8" id="skU-v8-xJA"/>
+                        <constraint firstItem="5ws-xc-x9H" firstAttribute="centerX" secondItem="lhk-I9-Kdc" secondAttribute="centerX" id="Uaf-cu-Nfj"/>
+                        <constraint firstAttribute="bottom" secondItem="qrp-6d-528" secondAttribute="bottom" constant="25" id="Vob-Mp-oxo"/>
+                        <constraint firstAttribute="trailing" secondItem="qrp-6d-528" secondAttribute="trailing" constant="8" id="aJG-us-Pg9"/>
+                        <constraint firstAttribute="bottom" secondItem="1Ji-MM-9b6" secondAttribute="bottom" constant="25" id="iK1-LO-NWH"/>
+                        <constraint firstAttribute="bottom" secondItem="5ws-xc-x9H" secondAttribute="bottom" constant="25" id="jxC-d6-PR8"/>
+                        <constraint firstItem="1Ji-MM-9b6" firstAttribute="leading" secondItem="lhk-I9-Kdc" secondAttribute="leading" constant="8" id="wLj-fM-AfD"/>
                     </constraints>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMr-0w-1HL">
+                    <rect key="frame" x="239" y="408" width="120" height="120"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="7A8-XF-eq9"/>
+                        <constraint firstAttribute="width" constant="120" id="IFO-EZ-Tkn"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="60"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="lhk-I9-Kdc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="36W-4W-1iM"/>
+                <constraint firstItem="lhk-I9-Kdc" firstAttribute="top" secondItem="NMr-0w-1HL" secondAttribute="bottom" constant="11" id="NGC-9O-Hsj"/>
                 <constraint firstAttribute="bottom" secondItem="lhk-I9-Kdc" secondAttribute="bottom" id="Nm9-ri-mVO"/>
+                <constraint firstAttribute="trailing" secondItem="NMr-0w-1HL" secondAttribute="trailing" constant="16" id="XZa-w1-0tV"/>
                 <constraint firstAttribute="trailing" secondItem="lhk-I9-Kdc" secondAttribute="trailing" id="orz-Bc-M1K"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="114.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="camera-icon" width="128" height="128"/>
+        <image name="mic-icon" width="128" height="128"/>
+        <image name="volume-icon" width="128" height="128"/>
+    </resources>
 </document>

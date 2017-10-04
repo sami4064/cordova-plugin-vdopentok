@@ -17,6 +17,7 @@ static bool subscribeToSelf = NO;
 
 @interface VDVideoViewController ()<OTSessionDelegate, OTSubscriberDelegate, OTPublisherDelegate>
 @property (weak, nonatomic) IBOutlet UIView *buttonsWrapperView;
+@property (weak, nonatomic) IBOutlet UIView *myVideoWrapperView;
 
 
 @end
@@ -27,8 +28,8 @@ static bool subscribeToSelf = NO;
     OTSubscriber* _subscriber;
 }
 
-static double widgetHeight = 150;
-static double widgetWidth = 150;
+static double widgetHeight = 120;
+static double widgetWidth = 120;
 
 -(void)stopCall{
     [_session disconnect:nil];
@@ -55,6 +56,10 @@ static double widgetWidth = 150;
 
 }
 
+- (IBAction)speakerTurnOffButton:(id)sender {
+    _subscriber.subscribeToAudio = !_subscriber.subscribeToAudio;
+    
+}
 
 - (void)viewDidLoad
 {
@@ -62,6 +67,7 @@ static double widgetWidth = 150;
     
     __weak VDVideoViewController* weakSelf = self;
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
     
 //    [self authenticatUserWithUsername:@"naieemsupto@gmail.com" Password:@"1234" AppointmentID:@"196" completionBlock:^(NSString *sessionId, NSString *tokenId, NSString *apiKey) {
 //        _kApiKey = apiKey;
@@ -76,6 +82,25 @@ static double widgetWidth = 150;
         [weakSelf doConnect];
         
 //    }];
+}
+
+-(CGRect*)getMyVideoRect{
+    
+}
+
+-(void)OrientationDidChange:(NSNotification*)notification {
+    UIDeviceOrientation Orientation=[[UIDevice currentDevice]orientation];
+    
+    if(Orientation==UIDeviceOrientationLandscapeLeft || Orientation==UIDeviceOrientationLandscapeRight) {
+        NSLog(@"Landscape");
+        if(_subscriber.view){
+            [_subscriber.view setFrame:CGRectMake(0, 0, self.view.frame.size.width,
+                                                  self.view.frame.size.height)];
+
+        }
+    } else if(Orientation==UIDeviceOrientationPortrait) {
+        NSLog(@"Potrait Mode");
+    }
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -130,8 +155,8 @@ static double widgetWidth = 150;
         [self showAlert:[error localizedDescription]];
     }
     
-    [self.view addSubview:_publisher.view];
-    [_publisher.view setFrame:CGRectMake(20, 20, widgetWidth, widgetHeight)];
+    [self.myVideoWrapperView addSubview:_publisher.view];
+    [_publisher.view setFrame:CGRectMake(0, 0, widgetWidth, widgetHeight)];
     
     [self.view bringSubviewToFront: self.buttonsWrapperView];
 }
@@ -257,7 +282,7 @@ didFailWithError:(OTError*)error
                                           frame.size.height)];
     [self.view addSubview:_subscriber.view];
     [self.view bringSubviewToFront:self.buttonsWrapperView];
-    if(_publisher.view)[self.view bringSubviewToFront:_publisher.view];
+    if(_publisher.view)[self.view bringSubviewToFront:self.myVideoWrapperView];
 }
 
 - (void)subscriber:(OTSubscriberKit*)subscriber
